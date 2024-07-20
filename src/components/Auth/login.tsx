@@ -1,5 +1,16 @@
-// src/components/Login.tsx
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { login } from "@/lib/authService";
 
 const Login: React.FC = () => {
@@ -17,23 +28,51 @@ const Login: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-        required
-      />
-      <button type="submit">Login</button>
-    </form>
+    <>
+      <Card className="mx-auto max-w-sm">
+        <form onSubmit={handleSubmit}>
+          <CardHeader>
+            <CardTitle className="text-xl">Login</CardTitle>
+            <CardDescription>Enter your information to login</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="m@example.com"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+
+              <Button type="submit" className="w-full">
+                Login
+              </Button>
+            </div>
+            <div className="mt-4 text-center text-sm">
+              Don't have an account?{" "}
+              <Link to="/signup" className="underline">
+                Signup
+              </Link>
+            </div>
+          </CardContent>
+        </form>
+      </Card>
+    </>
   );
 };
 
