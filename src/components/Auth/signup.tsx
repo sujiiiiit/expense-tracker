@@ -47,7 +47,7 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <Card className="mx-auto max-w-sm">
+    <Card className="mx-auto mt-20 max-w-sm xs:!border-0">
       <form onSubmit={handleSubmit}>
         <CardHeader>
           <CardTitle className="text-xl">Sign Up</CardTitle>
